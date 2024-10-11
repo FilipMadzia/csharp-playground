@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movies-api", "movies-api\mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "operator-overloading", "operator-overloading\operator-overloading.csproj", "{FD1E2D73-CE40-45A4-B266-5BFC91BA8A92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exploring-attributes", "exploring-attributes\exploring-attributes.csproj", "{7782F9C6-376C-449E-8495-EE6AB06C4B0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exploring-attributes", "exploring-attributes\exploring-attributes.csproj", "{7782F9C6-376C-449E-8495-EE6AB06C4B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bubble-sort-benchmark", "bubble-sort-benchmark\bubble-sort-benchmark.csproj", "{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{7782F9C6-376C-449E-8495-EE6AB06C4B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7782F9C6-376C-449E-8495-EE6AB06C4B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7782F9C6-376C-449E-8495-EE6AB06C4B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
