@@ -2,34 +2,99 @@
 
 class Program
 {
-	static void BubbleSortUnoptimized(List<int> x)
+	static void WriteList(List<int> list)
 	{
-		for(var i = 0; i < x.Count; i++)
+		foreach(var listElement in list)
 		{
-			for(var j = 0; j < x.Count - 1; j++)
+			Console.Write($"{listElement}, ");
+		}
+
+		Console.WriteLine();
+	}
+
+	static List<int> BubbleSortUnoptimized(List<int> list)
+	{
+		for(var i = 0; i < list.Count; i++)
+		{
+			for(var j = 0; j < list.Count - i - 1; j++)
 			{
-				if(x[j] > x[j + 1])
+				if(list[j] > list[j + 1])
 				{
-					var temp = x[j];
-					x[j] = x[j + 1];
-					x[j + 1] = temp;
+					var temp = list[j];
+					list[j] = list[j + 1];
+					list[j + 1] = temp;
 				}
 			}
 		}
+
+		return list;
 	}
+
+	static List<int> BubbleSortOptimized(List<int> list)
+	{
+		for(int i = 0; i < list.Count; i++)
+		{
+			bool swapped = false;
+			for(int j = 0; j < list.Count - i - 1; j++)
+			{
+				if(list[j] > list[j + 1])
+				{
+					int temp = list[j];
+					list[j] = list[j + 1];
+					list[j + 1] = temp;
+					swapped = true;
+				}
+			}
+			if(!swapped)
+				break;
+		}
+		return list;
+	}
+
 
 	static void Main()
 	{
 		var random = new Random();
 
-		var unsortedList = Enumerable.Range(0, 10000).Select(x => random.Next(0, 100));
+		double unoptimizedTotalTime = 0;
+		double optimizedTotalTime = 0;
+		int iterations = 10;
+		int dataSetSize = 10000;
 
-		var startTime = DateTime.Now;
+		for(int i = 0; i < iterations; i++)
+		{
+			Console.WriteLine($"Iteration: {i}");
 
-		BubbleSortUnoptimized(unsortedList.ToList());
+			var dataSet = Enumerable.Range(0, dataSetSize).Select(x => random.Next(0, 100)).ToList();
 
-		var endTime = DateTime.Now;
+			var startTime = DateTime.Now;
 
-		Console.WriteLine($"Unsorted bubble sort time: {(endTime - startTime).TotalSeconds}s");
+			BubbleSortUnoptimized(dataSet.ToList());
+
+			var endTime = DateTime.Now;
+
+			var timeElapsed = endTime - startTime;
+			unoptimizedTotalTime += timeElapsed.TotalSeconds;
+
+			Console.WriteLine($"\tUnoptimized: {timeElapsed.TotalSeconds}s");
+
+
+			startTime = DateTime.Now;
+
+			BubbleSortOptimized(dataSet.ToList());
+
+			endTime = DateTime.Now;
+
+			timeElapsed = endTime - startTime;
+			optimizedTotalTime += timeElapsed.TotalSeconds;
+
+			Console.WriteLine($"\tOptimized: {timeElapsed.TotalSeconds}s");
+
+		}
+
+		Console.WriteLine($"\nResults over {iterations} iterations with list of {dataSetSize} elements");
+		Console.WriteLine($"\tAverage Unoptimized bubble sort time: {unoptimizedTotalTime / iterations}s");
+		Console.WriteLine($"\tAverage Optimized bubble sort time: {optimizedTotalTime / iterations}s");
+		Console.WriteLine($"\nWinner: {(optimizedTotalTime < unoptimizedTotalTime ? "optimized" : "unoptimized")}");
 	}
 }
