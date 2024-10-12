@@ -16,7 +16,7 @@ class Program
 	{
 		for(var i = 0; i < list.Count; i++)
 		{
-			for(var j = 0; j < list.Count - i - 1; j++)
+			for(var j = 0; j < list.Count - 1; j++)
 			{
 				if(list[j] > list[j + 1])
 				{
@@ -50,7 +50,6 @@ class Program
 		}
 		return list;
 	}
-
 
 	static void Main()
 	{
