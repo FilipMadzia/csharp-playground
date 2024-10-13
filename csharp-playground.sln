@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "operator-overloading", "ope
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exploring-attributes", "exploring-attributes\exploring-attributes.csproj", "{7782F9C6-376C-449E-8495-EE6AB06C4B0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bubble-sort-benchmark", "bubble-sort-benchmark\bubble-sort-benchmark.csproj", "{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bubble-sort-benchmark", "bubble-sort-benchmark\bubble-sort-benchmark.csproj", "{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "merge-sort", "merge-sort\merge-sort.csproj", "{0428E27D-FAB7-43BB-9574-222E7D40AC3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71ADCC3E-1FE9-431C-AABF-BB5C39712B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0428E27D-FAB7-43BB-9574-222E7D40AC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0428E27D-FAB7-43BB-9574-222E7D40AC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0428E27D-FAB7-43BB-9574-222E7D40AC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0428E27D-FAB7-43BB-9574-222E7D40AC3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
