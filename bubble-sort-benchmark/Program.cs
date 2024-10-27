@@ -20,9 +20,7 @@ class Program
 			{
 				if(list[j] > list[j + 1])
 				{
-					var temp = list[j];
-					list[j] = list[j + 1];
-					list[j + 1] = temp;
+					(list[j], list[j + 1]) = (list[j + 1], list[j]);
 				}
 			}
 		}
@@ -40,9 +38,7 @@ class Program
 			{
 				if(list[j] > list[j + 1])
 				{
-					int temp = list[j];
-					list[j] = list[j + 1];
-					list[j + 1] = temp;
+					(list[j], list[j + 1]) = (list[j + 1], list[j]);
 
 					swapped = true;
 				}
