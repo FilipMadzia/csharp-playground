@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "merge-sort-vs-bubble-sort",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fizzbuzz", "fizzbuzz\fizzbuzz.csproj", "{6C38E551-C035-400A-B454-5A82BF279DBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dapper-exercise", "dapper-exercise\dapper-exercise.csproj", "{B341ECDF-B560-49EB-A0AD-03D365EAA43F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{6C38E551-C035-400A-B454-5A82BF279DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C38E551-C035-400A-B454-5A82BF279DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C38E551-C035-400A-B454-5A82BF279DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B341ECDF-B560-49EB-A0AD-03D365EAA43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B341ECDF-B560-49EB-A0AD-03D365EAA43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B341ECDF-B560-49EB-A0AD-03D365EAA43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B341ECDF-B560-49EB-A0AD-03D365EAA43F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
