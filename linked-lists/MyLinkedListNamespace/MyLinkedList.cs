@@ -2,10 +2,10 @@ using System.Collections;
 
 namespace linked_lists.MyLinkedListNamespace;
 
-public class MyLinkedList : IEnumerable<int>
+public class MyLinkedList<T> : IEnumerable<T>
 {
-    public Node? First { get; }
-    public Node? Last => GetLast();
+    public Node<T>? First { get; }
+    public Node<T>? Last => GetLast();
     public int Length => GetLength();
 
     int GetLength()
@@ -25,7 +25,7 @@ public class MyLinkedList : IEnumerable<int>
         return length;
     }
 
-    Node? GetLast()
+    Node<T>? GetLast()
     {
         if (First == null)
             return null;
@@ -42,7 +42,7 @@ public class MyLinkedList : IEnumerable<int>
     
     public MyLinkedList() { }
 
-    public MyLinkedList(ICollection<int> list)
+    public MyLinkedList(ICollection<T> list)
     {
         if (list.Count == 0)
             return;
@@ -61,7 +61,7 @@ public class MyLinkedList : IEnumerable<int>
         currentNode.Value = list.Last();
     }
 
-    public IEnumerator<int> GetEnumerator()
+    public IEnumerator<T> GetEnumerator()
     {
         var currentNode = First;
 

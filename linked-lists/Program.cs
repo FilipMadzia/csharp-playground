@@ -6,7 +6,13 @@ static class Program
 {
     static void Main()
     {
-        var myLinkedList = new MyLinkedList([3, 2, 4, 1]);
+        var myLinkedList = new MyLinkedList<int>([3, 2, 4, 1]);
+        var stringLinkedList = new MyLinkedList<string>(["hello", "world", "from", "Poland"]);
+        
+        foreach (var item in stringLinkedList)
+        {
+            Console.Write(item + " ");
+        }
 
         /*Console.WriteLine(myLinkedList);
         Console.WriteLine(myLinkedList.Length);
@@ -14,7 +20,7 @@ static class Program
 
         foreach (var item in myLinkedList)
         {
-            Console.WriteLine(item);
+            Console.Write(item + " ");
         }
     }
 }
