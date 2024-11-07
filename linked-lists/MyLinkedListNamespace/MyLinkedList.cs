@@ -2,16 +2,17 @@ namespace linked_lists.MyLinkedListNamespace;
 
 public class MyLinkedList
 {
-    public Node? Head { get; set; }
+    public Node? First { get; }
+    public Node? Last => GetLast();
     public int Length => GetLength();
 
     int GetLength()
     {
-        var length = 0;
-        var currentNode = Head;
+        if (First == null)
+            return 0;
         
-        if(currentNode == null)
-            return length;
+        var currentNode = First;
+        var length = 1;
 
         while (currentNode.Next != null)
         {
@@ -22,41 +23,58 @@ public class MyLinkedList
         return length;
     }
 
-    public MyLinkedList(List<int> list)
+    Node? GetLast()
+    {
+        if (First == null)
+            return null;
+        
+        var currentNode = First;
+
+        while (currentNode.Next != null)
+        {
+            currentNode = currentNode.Next;
+        }
+        
+        return currentNode;
+    }
+    
+    public MyLinkedList() { }
+
+    public MyLinkedList(ICollection<int> list)
     {
         if (list.Count == 0)
             return;
 
-        Head = new();
-        var currentNode = Head;
-        
-        foreach (var number in list)
+        First = new();
+        var currentNode = First;
+
+        for (var i = 0; i < list.Count - 1; i++)
         {
-            currentNode.Value = number;
-            currentNode.Next = new Node();
+            currentNode.Value = list.ElementAt(i);
+            currentNode.Next = new();
             
             currentNode = currentNode.Next;
         }
+        
+        currentNode.Value = list.Last();
     }
 
     public override string ToString()
     {
-        if (Head == null)
-            return "[ ]";
+        if (First == null)
+            return string.Empty;
         
-        var result = "[";
+        var result = "[ ";
         
-        var currentNode = Head;
+        var currentNode = First;
 
         while (currentNode.Next != null)
         {
             result += currentNode.Value + ", ";
             currentNode = currentNode.Next;
         }
-
-        result = result.Substring(0, result.Length - 2);
-
-        result += "]";
+        
+        result += currentNode.Value + " ]";
         
         return result;
     }

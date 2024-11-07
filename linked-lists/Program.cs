@@ -6,9 +6,10 @@ static class Program
 {
     static void Main()
     {
-        var myLinkedList = new MyLinkedList([1, 2, 3, 4, 5]);
+        var myLinkedList = new MyLinkedList([3, 2, 4, 1]);
 
         Console.WriteLine(myLinkedList);
         Console.WriteLine(myLinkedList.Length);
+        Console.WriteLine(myLinkedList.Last);
     }
 }
