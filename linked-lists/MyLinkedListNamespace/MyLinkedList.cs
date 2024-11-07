@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace linked_lists.MyLinkedListNamespace;
 
-public class MyLinkedList
+public class MyLinkedList : IEnumerable<int>
 {
     public Node? First { get; }
     public Node? Last => GetLast();
@@ -59,6 +61,17 @@ public class MyLinkedList
         currentNode.Value = list.Last();
     }
 
+    public IEnumerator<int> GetEnumerator()
+    {
+        var currentNode = First;
+
+        while (currentNode != null)
+        {
+            yield return currentNode.Value;
+            currentNode = currentNode.Next;
+        }
+    }
+
     public override string ToString()
     {
         if (First == null)
@@ -77,5 +90,10 @@ public class MyLinkedList
         result += currentNode.Value + " ]";
         
         return result;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
