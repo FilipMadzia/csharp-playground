@@ -2,13 +2,14 @@ using System.Collections;
 
 namespace linked_lists.MyLinkedListNamespace;
 
-public class MyLinkedList<T> : IEnumerable<T>
+public class MyLinkedList<T> : ICollection<T>
 {
-    public Node<T>? First { get; }
+    public Node<T>? First { get; private set; }
     public Node<T>? Last => GetLast();
-    public int Length => GetLength();
+    public int Count => GetCount();
+    public bool IsReadOnly => false;
 
-    int GetLength()
+    int GetCount()
     {
         if (First == null)
             return 0;
@@ -39,26 +40,39 @@ public class MyLinkedList<T> : IEnumerable<T>
         
         return currentNode;
     }
-    
-    public MyLinkedList() { }
 
-    public MyLinkedList(ICollection<T> list)
+    public void Add(T item)
     {
-        if (list.Count == 0)
-            return;
+        if (Last == null)
+            First = new() { Value = item };
+        else
+            Last.Next = new() { Value = item };
+    }
 
-        First = new();
-        var currentNode = First;
+    public bool Remove(T item)
+    {
+        throw new NotImplementedException();
+    }
 
-        for (var i = 0; i < list.Count - 1; i++)
+    public void Clear()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void CopyTo(T[] array, int arrayIndex)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Contains(T item)
+    {
+        foreach (var nodeValue in this)
         {
-            currentNode.Value = list.ElementAt(i);
-            currentNode.Next = new();
-            
-            currentNode = currentNode.Next;
+            if (item != null && item.Equals(nodeValue))
+                return true;
         }
-        
-        currentNode.Value = list.Last();
+
+        return false;
     }
 
     public IEnumerator<T> GetEnumerator()
@@ -71,29 +85,23 @@ public class MyLinkedList<T> : IEnumerable<T>
             currentNode = currentNode.Next;
         }
     }
-
-    public override string ToString()
-    {
-        if (First == null)
-            return string.Empty;
-        
-        var result = "[ ";
-        
-        var currentNode = First;
-
-        while (currentNode.Next != null)
-        {
-            result += currentNode.Value + ", ";
-            currentNode = currentNode.Next;
-        }
-        
-        result += currentNode.Value + " ]";
-        
-        return result;
-    }
-
+    
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
+    }
+
+    public override string ToString()
+    {
+        var linkedListAsString = string.Empty;
+
+        foreach (var nodeValue in this)
+        {
+            linkedListAsString += nodeValue + ", ";
+        }
+        
+        linkedListAsString = linkedListAsString.TrimEnd(',', ' ');
+        
+        return linkedListAsString;
     }
 }

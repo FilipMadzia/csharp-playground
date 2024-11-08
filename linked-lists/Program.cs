@@ -6,21 +6,15 @@ static class Program
 {
     static void Main()
     {
-        var myLinkedList = new MyLinkedList<int>([3, 2, 4, 1]);
-        var stringLinkedList = new MyLinkedList<string>(["hello", "world", "from", "Poland"]);
-        
-        foreach (var item in stringLinkedList)
-        {
-            Console.Write(item + " ");
-        }
+        var myLinkedList = new MyLinkedList<int> { 1, 3, 6, 2, 5 };
 
-        /*Console.WriteLine(myLinkedList);
-        Console.WriteLine(myLinkedList.Length);
-        Console.WriteLine(myLinkedList.Last);*/
+        var sum = 0;
 
         foreach (var item in myLinkedList)
         {
-            Console.Write(item + " ");
+            sum += item;
         }
+
+        Console.WriteLine(sum);
     }
 }
