@@ -37,7 +37,7 @@ public class MoviesController(DbContext _context) : ControllerBase
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
 	public ActionResult Get([FromRoute] int id)
 	{
-		var movie = _context.MovieEntity.Where(x => x.Id == id).FirstOrDefault();
+		var movie = _context.MovieEntity.FirstOrDefault(x => x.Id == id);
 
 		if(movie == null)
 		{
