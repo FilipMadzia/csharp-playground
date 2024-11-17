@@ -8,7 +8,7 @@ class Program
 {
     static void Main()
     {
-        using (var connection = new SqlConnection("Database=HotelixDb;Trusted_Connection=true"))
+        using (var connection = new SqlConnection("Database=HotelixDb; Trusted_Connection=true"))
         {
             var hotels = connection.Query<HotelEntity>("SELECT * FROM dbo.Hotels").ToList();
             

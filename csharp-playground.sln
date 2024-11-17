@@ -36,6 +36,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "valid-parentheses", "valid-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ado-dotnet-exercise", "ado-dotnet-exercise\ado-dotnet-exercise.csproj", "{ED741EA0-65CD-469B-BA1F-28C00A04509E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dapper-contrib-exercise", "dapper-contrib-exercise\dapper-contrib-exercise.csproj", "{39F920DD-F755-4FD9-A336-838B78906924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main-args-test", "main-args-test\main-args-test.csproj", "{E79052AA-16AA-4CC9-AD62-A01F603A56F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +102,14 @@ Global
 		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F920DD-F755-4FD9-A336-838B78906924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F920DD-F755-4FD9-A336-838B78906924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F920DD-F755-4FD9-A336-838B78906924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F920DD-F755-4FD9-A336-838B78906924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79052AA-16AA-4CC9-AD62-A01F603A56F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79052AA-16AA-4CC9-AD62-A01F603A56F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79052AA-16AA-4CC9-AD62-A01F603A56F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79052AA-16AA-4CC9-AD62-A01F603A56F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

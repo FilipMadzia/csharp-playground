@@ -5,7 +5,7 @@ static class Program
 {
 	static void Main()
 	{
-		const string connectionString = "Initial Catalog=HotelixDb; Integrated Security=true";
+		const string connectionString = "Database=HotelixDb; Integrated Security=true";
 		const string sqlQuery = "SELECT * FROM dbo.Cities WHERE Name = @Name";
 
 		using var connection = new SqlConnection(connectionString);
