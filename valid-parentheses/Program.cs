@@ -11,6 +11,7 @@ class Program
 	static bool ValidParentheses(string s)
 	{
 		var stack = new Stack<char>();
+		
 		foreach (var c in s)
 		{
 			switch(c)
@@ -65,9 +66,11 @@ class Program
 					break;
 				default:
 					throw new Exception();
-					break;
 			}
 		}
-		return stack.Count == 0;
+
+		var areParenthesesValid = stack.Count == 0;
+		
+		return areParenthesesValid;
 	}
 }
