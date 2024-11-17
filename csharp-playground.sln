@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "list-visualizer", "list-vis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "valid-parentheses", "valid-parentheses\valid-parentheses.csproj", "{E27BB3D3-36BD-443C-B9A8-34AFA77179D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ado-dotnet-exercise", "ado-dotnet-exercise\ado-dotnet-exercise.csproj", "{ED741EA0-65CD-469B-BA1F-28C00A04509E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{E27BB3D3-36BD-443C-B9A8-34AFA77179D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E27BB3D3-36BD-443C-B9A8-34AFA77179D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E27BB3D3-36BD-443C-B9A8-34AFA77179D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED741EA0-65CD-469B-BA1F-28C00A04509E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
