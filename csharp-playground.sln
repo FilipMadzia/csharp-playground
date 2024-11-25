@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main-args-test", "main-args
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linked-lists", "linked-lists\linked-lists.csproj", "{2E61987B-7FEF-4E67-BA25-30605951732D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-exercise", "entity-framework-exercise\entity-framework-exercise.csproj", "{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{2E61987B-7FEF-4E67-BA25-30605951732D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E61987B-7FEF-4E67-BA25-30605951732D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E61987B-7FEF-4E67-BA25-30605951732D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
