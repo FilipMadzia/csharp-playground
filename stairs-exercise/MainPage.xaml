@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="stairs_exercise.MainPage"
+			 Title="Schody">
+
+	<StackLayout Padding="15" Spacing="15">
+		<Label Text="Podaj dostępną wysokość" />
+		<Entry x:Name="inputHeight" Placeholder="Wysokość w cm" Keyboard="Numeric" />
+
+		<Label Text="Podaj dostępną głębokość" />
+		<Entry x:Name="inputDepth" Placeholder="Głębokość w cm" Keyboard="Numeric" />
+
+		<Button Clicked="Button_Clicked" Text="Oblicz" />
+
+		<Label x:Name="errorLabel" TextColor="Red" />
+
+		<StackLayout x:Name="resultLayout" IsVisible="False">
+			<Label x:Name="stairsCountLabel" Text="Ilość schodów:" />
+			<Label x:Name="heightOfEachStairLabel" Text="Wysokość każdego stopnia:" />
+			<Label x:Name="depthOfEachStairLabel" Text="Głębokość każdego stopnia:" />
+		</StackLayout>
+	</StackLayout>
+</ContentPage>

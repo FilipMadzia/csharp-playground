@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linked-lists", "linked-list
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-exercise", "entity-framework-exercise\entity-framework-exercise.csproj", "{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stairs-exercise", "stairs-exercise\stairs-exercise.csproj", "{E378062C-B263-4BB9-81B9-43EFB007E6BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,12 @@ Global
 		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD4EA95F-2EEE-45A5-AA0F-2AF8348B091A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
