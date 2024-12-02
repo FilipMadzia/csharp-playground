@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-exercise",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stairs-exercise", "stairs-exercise\stairs-exercise.csproj", "{E378062C-B263-4BB9-81B9-43EFB007E6BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-store-example", "entity-framework-store-example\entity-framework-store-example.csproj", "{3F471029-E67A-4061-BE8A-3F1FAB50249E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,10 @@ Global
 		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E378062C-B263-4BB9-81B9-43EFB007E6BA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
