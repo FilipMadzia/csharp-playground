@@ -9,5 +9,5 @@ public class OrderEntity : Entity
 	public Guid CustomerId { get; set; }
 	public CustomerEntity Customer { get; set; } = null!;
 
-	public ICollection<OrderProductEntity> OrderProducts { get; set; } = [];
+	public ICollection<ProductEntity> Products { get; set; } = [];
 }

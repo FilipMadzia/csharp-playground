@@ -8,7 +8,6 @@ public class StoreDbContext : DbContext
 	public DbSet<CategoryEntity> Categories { get; set; }
 	public DbSet<CustomerEntity> Customers { get; set; }
 	public DbSet<OrderEntity> Orders { get; set; }
-	public DbSet<OrderProductEntity> OrderProducts { get; set; }
 	public DbSet<ProductEntity> Products { get; set; }
 	
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -19,6 +18,11 @@ public class StoreDbContext : DbContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		base.OnModelCreating(modelBuilder);
+
+		modelBuilder.Entity<ProductEntity>()
+			.HasMany(x => x.Orders)
+			.WithMany(x => x.Products)
+			.UsingEntity("OrderProduct");
 		
 		var dataSeeder = new DataSeeder(modelBuilder);
 		

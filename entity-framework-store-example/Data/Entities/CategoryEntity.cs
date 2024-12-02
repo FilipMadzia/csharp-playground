@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using entity_framework_store_example.Data.Entities.Shared;
 
 namespace entity_framework_store_example.Data.Entities;

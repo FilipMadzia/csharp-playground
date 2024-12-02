@@ -14,5 +14,5 @@ public class ProductEntity : Entity
 	public Guid CategoryId { get; set; }
 	public CategoryEntity Category { get; set; } = null!;
 
-	public ICollection<OrderProductEntity> OrderProducts { get; set; } = [];
+	public ICollection<OrderEntity> Orders { get; set; } = [];
 }
