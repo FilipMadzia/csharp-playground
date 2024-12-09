@@ -15,4 +15,6 @@ public class ProductEntity : Entity
 	public CategoryEntity Category { get; set; } = null!;
 
 	public ICollection<OrderEntity> Orders { get; set; } = [];
+	
+	public override string ToString() => $"{Id}\t{Name}\t{Price}\t{Description}\t{CategoryId}";
 }

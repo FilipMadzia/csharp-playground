@@ -10,4 +10,6 @@ public class CategoryEntity : Entity
 	public string Name { get; set; } = string.Empty;
 
 	public ICollection<ProductEntity> Products { get; set; } = [];
+
+	public override string ToString() => $"{Id}\t{Name}";
 }
