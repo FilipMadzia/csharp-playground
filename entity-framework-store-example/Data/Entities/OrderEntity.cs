@@ -10,4 +10,6 @@ public class OrderEntity : Entity
 	public CustomerEntity Customer { get; set; } = null!;
 
 	public ICollection<ProductEntity> Products { get; set; } = [];
+	
+	public override string ToString() => $"{Id}\t{OrderDate}\t{CustomerId}";
 }

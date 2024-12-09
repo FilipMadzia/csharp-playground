@@ -11,4 +11,6 @@ public class CustomerEntity : Entity
 	public string LastName { get; set; } = string.Empty;
 
 	public ICollection<OrderEntity> Orders { get; set; } = [];
+	
+	public override string ToString() => $"{Id}\t{FirstName}\t{LastName}";
 }

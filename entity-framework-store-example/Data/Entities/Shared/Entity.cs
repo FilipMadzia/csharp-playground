@@ -8,4 +8,6 @@ public class Entity
 	public Guid Id { get; private set; } = Guid.NewGuid();
 	public DateTime Created { get; private set; } = DateTime.Now;
 	public DateTime? Modified { get; set; }
+	
+	public override string ToString() => $"{Id}\t{Created}\t{Modified}";
 }
