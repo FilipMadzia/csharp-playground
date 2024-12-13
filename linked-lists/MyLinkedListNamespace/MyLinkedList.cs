@@ -51,12 +51,39 @@ public class MyLinkedList<T> : ICollection<T>
 
     public bool Remove(T item)
     {
-        throw new NotImplementedException();
+        if (First == null)
+            return false;
+        if (item == null)
+            return false;
+        
+        if (item.Equals(First.Value))
+        {
+            First = First.Next;
+            First = null;
+            
+            return true;
+        }
+
+        var previousNode = First;
+        var currentNode = First.Next;
+
+        while (currentNode != null && !item.Equals(currentNode.Value))
+        {
+            previousNode = currentNode;
+            currentNode = currentNode.Next;
+        }
+        
+        if (currentNode == null)
+            return false;
+        
+        previousNode.Next = currentNode.Next;
+
+        return true;
     }
 
     public void Clear()
     {
-        throw new NotImplementedException();
+        First = null;
     }
 
     public void CopyTo(T[] array, int arrayIndex)
