@@ -81,10 +81,7 @@ public class MyLinkedList<T> : ICollection<T>
         return true;
     }
 
-    public void Clear()
-    {
-        First = null;
-    }
+    public void Clear() => First = null;
 
     public void CopyTo(T[] array, int arrayIndex)
     {
