@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-exercise",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity-framework-store-example", "entity-framework-store-example\entity-framework-store-example.csproj", "{3F471029-E67A-4061-BE8A-3F1FAB50249E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "image-generation", "image-generation\image-generation.csproj", "{4186231B-ADC9-480D-BCE9-4A1AC47DAC3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-introduction", "wpf-introduction\wpf-introduction.csproj", "{7C1467FD-405D-4084-B1C1-19EE4EA99FE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,10 +124,10 @@ Global
 		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F471029-E67A-4061-BE8A-3F1FAB50249E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4186231B-ADC9-480D-BCE9-4A1AC47DAC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4186231B-ADC9-480D-BCE9-4A1AC47DAC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4186231B-ADC9-480D-BCE9-4A1AC47DAC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4186231B-ADC9-480D-BCE9-4A1AC47DAC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1467FD-405D-4084-B1C1-19EE4EA99FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1467FD-405D-4084-B1C1-19EE4EA99FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1467FD-405D-4084-B1C1-19EE4EA99FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1467FD-405D-4084-B1C1-19EE4EA99FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
