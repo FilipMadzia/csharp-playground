@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-introduction", "wpf-int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "database-first-approach", "database-first-approach\database-first-approach.csproj", "{C7166607-F100-452A-9259-64EE73AC7A10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boat-game", "boat-game\boat-game.csproj", "{EE149A90-5102-477A-95A3-6339ADFD7215}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,10 @@ Global
 		{C7166607-F100-452A-9259-64EE73AC7A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7166607-F100-452A-9259-64EE73AC7A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7166607-F100-452A-9259-64EE73AC7A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE149A90-5102-477A-95A3-6339ADFD7215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE149A90-5102-477A-95A3-6339ADFD7215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE149A90-5102-477A-95A3-6339ADFD7215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE149A90-5102-477A-95A3-6339ADFD7215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
