@@ -5,9 +5,12 @@
 			 BackgroundColor="CadetBlue">
 
 	<Grid>
-		<Label HorizontalOptions="End" FontSize="Title" x:Name="windDirectionLbl" Text="0°" />
-		<Label HorizontalOptions="Center" VerticalOptions="End" FontSize="Title" x:Name="rotationLbl" Text="0°" />
+		<Image x:Name="compassNeedle" WidthRequest="70" Source="compass_needle.png" HorizontalOptions="End" VerticalOptions="Start" />
 		
+		<Label HorizontalOptions="Start" FontSize="Title" x:Name="windDirectionLbl" Text="0°" />
+		<Label HorizontalOptions="Center" VerticalOptions="End" FontSize="Title" x:Name="rotationLbl" Text="0°" />
+
+
 		<Image x:Name="boatImage" WidthRequest="40" Source="boat.png" VerticalOptions="Center" HorizontalOptions="Center" />
 
 		<Button Text="&lt;" FontSize="Title" Pressed="OnTurnLeftButtonPressed" Released="OnTurnLeftButtonReleased" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="100" WidthRequest="100" TextColor="Black" BackgroundColor="White" Margin="10" />

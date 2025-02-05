@@ -135,6 +135,7 @@ public partial class MainPage : ContentPage
 	private void GetRandomWindDirection()
 	{
 		_windDirection = new Random().Next(0, 360);
+		compassNeedle.Rotation = _windDirection;
 
 		windDirectionLbl.Text = $"{_windDirection}°";
 	}
