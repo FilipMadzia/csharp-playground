@@ -52,22 +52,64 @@ public partial class MainPage : ContentPage
 	private void OnTurnLeft(object sender, EventArgs e)
 	{
 		_rotation -= _rotationSpeed;
+
+		if (_rotation < 0)
+		{
+			_rotation += 360;
+		}
+
+		UpdateRotationLabel();
+
 		BoatImage.Rotation = _rotation;
 	}
 
 	private void OnTurnRight(object sender, EventArgs e)
 	{
 		_rotation += _rotationSpeed;
+
+		if (_rotation >= 360)
+		{
+			_rotation -= 360;
+		}
+
+		UpdateRotationLabel();
+
 		BoatImage.Rotation = _rotation;
 	}
 
 	private void OnTimerTick(object sender, EventArgs e)
 	{
 		double radians = _rotation * Math.PI / 180;
-		_x += _speed * Math.Cos(radians);
-		_y += _speed * Math.Sin(radians);
+		_x += _speed * Math.Sin(radians);
+		_y += _speed * -Math.Cos(radians);
+
+		ClampYPosition();
+		ClampXPosition();
 
 		BoatImage.TranslationX = _x;
 		BoatImage.TranslationY = _y;
+	}
+
+	private void UpdateRotationLabel()
+	{
+		rotationLbl.Text = $"{_rotation}°";
+	}
+
+	private void ClampYPosition()
+	{
+		var _maxY = -(Height / 2) + BoatImage.Height / 2;
+		var _minY = (Height / 2) - BoatImage.Height / 2;
+
+		_y = Math.Max(_y, _maxY);
+		_y = Math.Min(_y, _minY);
+	}
+
+	private void ClampXPosition()
+	{
+		var _maxX = (Width / 2) - BoatImage.Width / 2;
+		var _minX = -(Width / 2) + BoatImage.Width / 2;
+
+		_x = Math.Min(_x, _maxX);
+		_x = Math.Max(_x, _minX);
 	}
 }
