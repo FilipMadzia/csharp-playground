@@ -60,7 +60,7 @@ public partial class MainPage : ContentPage
 
 		UpdateRotationLabel();
 
-		BoatImage.Rotation = _rotation;
+		boatImage.Rotation = _rotation;
 	}
 
 	private void OnTurnRight(object sender, EventArgs e)
@@ -74,7 +74,7 @@ public partial class MainPage : ContentPage
 
 		UpdateRotationLabel();
 
-		BoatImage.Rotation = _rotation;
+		boatImage.Rotation = _rotation;
 	}
 
 	private void OnTimerTick(object sender, EventArgs e)
@@ -86,8 +86,8 @@ public partial class MainPage : ContentPage
 		ClampYPosition();
 		ClampXPosition();
 
-		BoatImage.TranslationX = _x;
-		BoatImage.TranslationY = _y;
+		boatImage.TranslationX = _x;
+		boatImage.TranslationY = _y;
 	}
 
 	private void UpdateRotationLabel()
@@ -97,8 +97,8 @@ public partial class MainPage : ContentPage
 
 	private void ClampYPosition()
 	{
-		var _maxY = -(Height / 2) + BoatImage.Height / 2;
-		var _minY = (Height / 2) - BoatImage.Height / 2;
+		var _maxY = -(Height / 2) + boatImage.Height / 2;
+		var _minY = (Height / 2) - boatImage.Height / 2;
 
 		_y = Math.Max(_y, _maxY);
 		_y = Math.Min(_y, _minY);
@@ -106,8 +106,8 @@ public partial class MainPage : ContentPage
 
 	private void ClampXPosition()
 	{
-		var _maxX = (Width / 2) - BoatImage.Width / 2;
-		var _minX = -(Width / 2) + BoatImage.Width / 2;
+		var _maxX = (Width / 2) - boatImage.Width / 2;
+		var _minX = -(Width / 2) + boatImage.Width / 2;
 
 		_x = Math.Min(_x, _maxX);
 		_x = Math.Max(_x, _minX);
