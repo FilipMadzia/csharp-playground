@@ -9,6 +9,7 @@ public partial class MainPage : ContentPage
 	private double _x = 0;
 	private double _y = 0;
 	private double _refreshRate = 30;
+	private double _deadAngle = 10;
 
 	private IDispatcherTimer _timer;
 	private IDispatcherTimer _turnTimer;
@@ -82,9 +83,24 @@ public partial class MainPage : ContentPage
 
 	private void OnTimerTick(object sender, EventArgs e)
 	{
-		double radians = _rotation * Math.PI / 180;
-		_x += _speed * Math.Sin(radians);
-		_y += _speed * -Math.Cos(radians);
+		var radians = _rotation * Math.PI / 180;
+		var speed = _speed;
+
+		var relativeAngle = Math.Abs((_rotation - _windDirection + 360) % 360);
+		if(relativeAngle > 180)
+		{
+			relativeAngle = Math.Abs(relativeAngle - 360);
+		}
+
+		if(Math.Abs(relativeAngle) <= _deadAngle) speed = 0;
+		else if(Math.Abs(relativeAngle) > _deadAngle && Math.Abs(relativeAngle) <= 45) speed = _speed * 0.2;
+		else if(Math.Abs(relativeAngle) > 45 && Math.Abs(relativeAngle) <= 90) speed = _speed * 0.5;
+		else if(Math.Abs(relativeAngle) > 90 && Math.Abs(relativeAngle) <= 135) speed = _speed * 0.8;
+		else if(Math.Abs(relativeAngle) > 135) speed = _speed;
+		else speed = 0;
+
+		_x += speed * Math.Sin(radians);
+		_y += speed * -Math.Cos(radians);
 
 		ClampYPosition();
 		ClampXPosition();
