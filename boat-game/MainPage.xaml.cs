@@ -3,6 +3,7 @@
 public partial class MainPage : ContentPage
 {
 	private double _rotation = 0;
+	private double _windDirection = 0;
 	private double _speed = 3;
 	private double _rotationSpeed = 3;
 	private double _x = 0;
@@ -15,6 +16,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+		GetRandomWindDirection();
 
 		_timer = Dispatcher.CreateTimer();
 		_timer.Interval = TimeSpan.FromMilliseconds(_refreshRate);
@@ -111,5 +114,12 @@ public partial class MainPage : ContentPage
 
 		_x = Math.Min(_x, _maxX);
 		_x = Math.Max(_x, _minX);
+	}
+
+	private void GetRandomWindDirection()
+	{
+		_windDirection = new Random().Next(0, 360);
+
+		windDirectionLbl.Text = $"{_windDirection}°";
 	}
 }

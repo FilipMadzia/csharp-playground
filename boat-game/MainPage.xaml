@@ -5,7 +5,8 @@
 			 BackgroundColor="CadetBlue">
 
 	<Grid>
-		<Label x:Name="rotationLbl" Text="0°" />
+		<Label HorizontalOptions="End" FontSize="Title" x:Name="windDirectionLbl" Text="0°" />
+		<Label HorizontalOptions="Center" VerticalOptions="End" FontSize="Title" x:Name="rotationLbl" Text="0°" />
 		
 		<Image x:Name="boatImage" WidthRequest="40" Source="boat.png" VerticalOptions="Center" HorizontalOptions="Center" />
 
