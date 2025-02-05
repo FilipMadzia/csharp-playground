@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:wpf_introduction"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Hello World!" />
-    </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Współczynnik a" />
+            <TextBox x:Name="wspA" Text="1"></TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Współczynnik b" />
+            <TextBox x:Name="wspB" Text="1"></TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Współczynnik c" />
+            <TextBox x:Name="wspC" Text="1"></TextBox>
+        </StackPanel>
+        
+        <Button Click="ButtonBase_OnClick" Content="Licz"></Button>
+        
+        <Label x:Name="result"></Label>
+    </StackPanel>
 </Window>
