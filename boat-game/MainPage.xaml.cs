@@ -10,6 +10,8 @@ public partial class MainPage : ContentPage
 	private double _y = 0;
 	private double _refreshRate = 30;
 	private double _deadAngle = 10;
+	private string _windCourse = string.Empty;
+	private int _imageRefreshInterval = 0;
 
 	private IDispatcherTimer _timer;
 	private IDispatcherTimer _turnTimer;
@@ -92,12 +94,85 @@ public partial class MainPage : ContentPage
 			relativeAngle = Math.Abs(relativeAngle - 360);
 		}
 
-		if(Math.Abs(relativeAngle) <= _deadAngle) speed = 0;
-		else if(Math.Abs(relativeAngle) > _deadAngle && Math.Abs(relativeAngle) <= 45) speed = _speed * 0.2;
-		else if(Math.Abs(relativeAngle) > 45 && Math.Abs(relativeAngle) <= 90) speed = _speed * 0.5;
-		else if(Math.Abs(relativeAngle) > 90 && Math.Abs(relativeAngle) <= 135) speed = _speed * 0.8;
-		else if(Math.Abs(relativeAngle) > 135) speed = _speed;
-		else speed = 0;
+		var direction = GetWindDirection();
+
+		if(_imageRefreshInterval >= 15)
+		{
+			_imageRefreshInterval = 0;
+
+			if(direction == 'R')
+				boatImage.Source = "yacht_prawy.png";
+			else
+				boatImage.Source = "yacht_lewy.png";
+
+			if(Math.Abs(relativeAngle) <= _deadAngle)
+			{
+				boatImage.Source = "yacht_lopot.png";
+				_windCourse = "Kąt martwy";
+			}
+			else if(Math.Abs(relativeAngle) > _deadAngle && Math.Abs(relativeAngle) <= 45)
+			{
+				if(direction == 'R')
+				{
+					_windCourse = "Bajdewind prawego halsu";
+				}
+				else
+				{
+					_windCourse = "Bajdewind lewego halsu";
+				}
+			}
+			else if(Math.Abs(relativeAngle) > 45 && Math.Abs(relativeAngle) <= 90)
+			{
+				if(direction == 'R')
+				{
+					_windCourse = "Półwiatr prawego halsu";
+				}
+				else
+				{
+					_windCourse = "Półwiatr lewego halsu";
+				}
+			}
+			else if(Math.Abs(relativeAngle) > 90 && Math.Abs(relativeAngle) <= 135)
+			{
+				if(direction == 'R')
+				{
+					_windCourse = "Baksztag prawego halsu";
+				}
+				else
+				{
+					_windCourse = "Baksztag lewego halsu";
+				}
+			}
+			else if(Math.Abs(relativeAngle) > 135)
+			{
+				if(direction == 'R')
+				{
+					_windCourse = "Fordewind prawego halsu";
+				}
+				else
+				{
+					_windCourse = "Fordewind lewego halsu";
+				}
+			}
+			else
+			{
+				boatImage.Source = "yacht_lopot.png";
+				_windCourse = "Kąt martwy";
+			}
+		}
+
+		if(Math.Abs(relativeAngle) <= _deadAngle)
+			speed = 0;
+		else if(Math.Abs(relativeAngle) > _deadAngle && Math.Abs(relativeAngle) <= 45)
+			speed = _speed * 0.2;
+		else if(Math.Abs(relativeAngle) > 45 && Math.Abs(relativeAngle) <= 90)
+			speed = _speed * 0.5;
+		else if(Math.Abs(relativeAngle) > 90 && Math.Abs(relativeAngle) <= 135)
+			speed = _speed * 0.8;
+		else if(Math.Abs(relativeAngle) > 135)
+			speed = _speed;
+		else
+			speed = 0;
 
 		_x += speed * Math.Sin(radians);
 		_y += speed * -Math.Cos(radians);
@@ -107,6 +182,8 @@ public partial class MainPage : ContentPage
 
 		boatImage.TranslationX = _x;
 		boatImage.TranslationY = _y;
+
+		_imageRefreshInterval++;
 	}
 
 	private void UpdateRotationLabel()
@@ -138,5 +215,24 @@ public partial class MainPage : ContentPage
 		compassNeedle.Rotation = _windDirection;
 
 		windDirectionLbl.Text = $"{_windDirection}°";
+	}
+
+	private char GetWindDirection()
+	{
+		var windDirection = 'R';
+
+		var fromWind = _rotation;
+		var toWind = (_rotation + 180 > 360) ? _rotation + 180 - 360 : _rotation + 180;
+
+		if(toWind < fromWind)
+		{
+			windDirection = (_windDirection >= fromWind || _windDirection < toWind) ? 'R' : 'L';
+		}
+		else
+		{
+			windDirection = (_windDirection >= fromWind && _windDirection < toWind) ? 'R' : 'L';
+		}
+
+		return windDirection;
 	}
 }

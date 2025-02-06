@@ -5,9 +5,12 @@
 			 BackgroundColor="CadetBlue">
 
 	<Grid>
-		<Image x:Name="compassNeedle" WidthRequest="70" Source="compass_needle.png" HorizontalOptions="End" VerticalOptions="Start" />
+		<StackLayout HorizontalOptions="End" Orientation="Vertical">
+			<Image VerticalOptions="Start" x:Name="compassNeedle" WidthRequest="70" Source="compass_needle.png" />
+
+			<Label VerticalOptions="Start" FontSize="Title" x:Name="windDirectionLbl" Text="0°" />
+		</StackLayout>
 		
-		<Label HorizontalOptions="Start" FontSize="Title" x:Name="windDirectionLbl" Text="0°" />
 		<Label HorizontalOptions="Center" VerticalOptions="End" FontSize="Title" x:Name="rotationLbl" Text="0°" />
 
 
