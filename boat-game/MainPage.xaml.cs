@@ -184,6 +184,8 @@ public partial class MainPage : ContentPage
 		boatImage.TranslationY = _y;
 
 		_imageRefreshInterval++;
+
+		windCourseLbl.Text = _windCourse;
 	}
 
 	private void UpdateRotationLabel()

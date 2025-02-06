@@ -5,6 +5,7 @@
 			 BackgroundColor="CadetBlue">
 
 	<Grid>
+		<Label FontSize="Title" x:Name="windCourseLbl" Text="" />
 		<StackLayout HorizontalOptions="End" Orientation="Vertical">
 			<Image VerticalOptions="Start" x:Name="compassNeedle" WidthRequest="70" Source="compass_needle.png" />
 
