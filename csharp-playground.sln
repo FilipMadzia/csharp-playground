@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "database-first-approach", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boat-game", "boat-game\boat-game.csproj", "{EE149A90-5102-477A-95A3-6339ADFD7215}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "many-to-many", "many-to-many\many-to-many.csproj", "{B3047DCC-0EFF-44C4-9362-A0EFC6D8CEDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{EE149A90-5102-477A-95A3-6339ADFD7215}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{EE149A90-5102-477A-95A3-6339ADFD7215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE149A90-5102-477A-95A3-6339ADFD7215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3047DCC-0EFF-44C4-9362-A0EFC6D8CEDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3047DCC-0EFF-44C4-9362-A0EFC6D8CEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3047DCC-0EFF-44C4-9362-A0EFC6D8CEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3047DCC-0EFF-44C4-9362-A0EFC6D8CEDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
