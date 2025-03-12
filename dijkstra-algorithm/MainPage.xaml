@@ -3,16 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="dijkstra_algorithm.MainPage">
 
-	<VerticalStackLayout Padding="20" Spacing="10">
-		<Label Text="Enter Distances Between Vertices" FontSize="20" HorizontalOptions="Center" />
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
 
-		<Entry x:Name="ABEntry" Placeholder="Distance A -> B" Keyboard="Numeric" />
-		<Entry x:Name="ACEntry" Placeholder="Distance A -> C" Keyboard="Numeric" />
-		<Entry x:Name="BCEntry" Placeholder="Distance B -> C" Keyboard="Numeric" />
+		<Label HorizontalOptions="Center" FontSize="Title" Grid.Column="1" Grid.Row="0" Text="A" />
+		<Label HorizontalOptions="Center" FontSize="Title" Grid.Column="0" Grid.Row="2" Text="B" />
+		<Label HorizontalOptions="Center" FontSize="Title" Grid.Column="2" Grid.Row="2" Text="C" />
 
-		<Button Text="Calculate Shortest Path" Clicked="OnCalculateShortestPathClicked" />
+		<Entry HorizontalOptions="Center" WidthRequest="100" HeightRequest="50" Placeholder="A - B" Grid.Row="1" Grid.Column="0" x:Name="ABEntry" />
+		<Entry HorizontalOptions="Center" WidthRequest="100" HeightRequest="50" Placeholder="A - C" Grid.Row="1" Grid.Column="2" x:Name="ACEntry" />
+		<Entry HorizontalOptions="Center" WidthRequest="100" HeightRequest="50" Placeholder="B - C" Grid.Row="2" Grid.Column="1" x:Name="BCEntry" />
 
-		<Label x:Name="ResultLabel" Text="Result will appear here..." FontSize="16" TextColor="Blue" />
-	</VerticalStackLayout>
+		<Button Grid.Row="3" Grid.ColumnSpan="3" Text="Calculate Shortest Path" Clicked="OnCalculateShortestPathClicked" />
+
+		<Label Grid.Row="4" Grid.ColumnSpan="3" x:Name="ResultLabel" Text="Result will appear here..." FontSize="16" TextColor="White" />
+	</Grid>
 
 </ContentPage>
