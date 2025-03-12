@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boat-game", "boat-game\boat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-application", "wpf-application\wpf-application.csproj", "{FF24BFDC-4B99-4EA9-8F87-B8771276D791}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dijkstra-algorithm", "dijkstra-algorithm\dijkstra-algorithm.csproj", "{3D51A80E-659A-409E-A514-62F723C738BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,12 @@ Global
 		{FF24BFDC-4B99-4EA9-8F87-B8771276D791}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF24BFDC-4B99-4EA9-8F87-B8771276D791}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF24BFDC-4B99-4EA9-8F87-B8771276D791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
