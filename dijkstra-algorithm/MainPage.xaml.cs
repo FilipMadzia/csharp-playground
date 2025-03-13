@@ -11,57 +11,56 @@ public partial class MainPage : ContentPage
 	{
 		try
 		{
-			// Parse distances
-			int distanceAB = int.Parse(ABEntry.Text);
-			int distanceAC = int.Parse(ACEntry.Text);
-			int distanceBC = int.Parse(BCEntry.Text);
+			var distanceAB = int.Parse(ABEntry.Text);
+			var distanceAC = int.Parse(ACEntry.Text);
+			var distanceBC = int.Parse(BCEntry.Text);
 
-			// Adjacency matrix for the graph
-			int[,] graph = new int[3, 3]
+			if(distanceAB < 0 || distanceAC < 0 || distanceBC < 0)
+				throw new Exception("Distance between vertices can't be smaller than 0");
+
+			var graph = new int[3, 3]
 			{
-					{ 0, distanceAB, distanceAC },
-					{ distanceAB, 0, distanceBC },
-					{ distanceAC, distanceBC, 0 }
+				{ 0, distanceAB, distanceAC },
+				{ distanceAB, 0, distanceBC },
+				{ distanceAC, distanceBC, 0 }
 			};
 
-			// Find shortest path from vertex A (0) to B (1)
 			(int[] distances, int[] predecessors) = Dijkstra(graph, 0);
 
-			// Build the path from A to B
-			string path = BuildPath(predecessors, 0, 1);
-
-			// Display result
-			ResultLabel.Text = $"Shortest path from A to B: {path}. Distance: {distances[1]}";
+			var path = BuildPath(predecessors, 0, 1);
+			
+			ResultLabel.Text = $"Shortest path from A to B:" +
+				$"\n{path}" +
+				$"\nDistance: {distances[1]}";
 		}
-		catch(Exception ex)
+		catch
 		{
-			ResultLabel.Text = $"Error: {ex.Message}";
+			ResultLabel.Text = "Enter valid numbers";
 		}
 	}
 
 	private (int[], int[]) Dijkstra(int[,] graph, int source)
 	{
-		int vertices = graph.GetLength(0);
-		int[] dist = new int[vertices]; // Shortest distances
-		bool[] sptSet = new bool[vertices]; // Shortest Path Tree Set
-		int[] predecessors = new int[vertices]; // To track the path
+		var vertices = graph.GetLength(0);
+		var dist = new int[vertices]; // Shortest distances
+		var sptSet = new bool[vertices]; // Shortest Path Tree Set
+		var predecessors = new int[vertices];
 
-		// Initialize distances and predecessors
-		for(int i = 0; i < vertices; i++)
+		for(var i = 0; i < vertices; i++)
 		{
 			dist[i] = int.MaxValue;
 			sptSet[i] = false;
 			predecessors[i] = -1;
 		}
+
 		dist[source] = 0;
 
-		// Find shortest path for all vertices
-		for(int count = 0; count < vertices - 1; count++)
+		for(var count = 0; count < vertices - 1; count++)
 		{
-			int u = MinDistance(dist, sptSet);
+			var u = MinDistance(dist, sptSet);
 			sptSet[u] = true;
 
-			for(int v = 0; v < vertices; v++)
+			for(var v = 0; v < vertices; v++)
 			{
 				if(!sptSet[v] && graph[u, v] != 0 &&
 					dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
@@ -76,9 +75,10 @@ public partial class MainPage : ContentPage
 
 	private int MinDistance(int[] dist, bool[] sptSet)
 	{
-		int min = int.MaxValue, minIndex = -1;
+		var min = int.MaxValue;
+		var minIndex = -1;
 
-		for(int v = 0; v < dist.Length; v++)
+		for(var v = 0; v < dist.Length; v++)
 		{
 			if(!sptSet[v] && dist[v] <= min)
 			{
@@ -91,8 +91,8 @@ public partial class MainPage : ContentPage
 
 	private string BuildPath(int[] predecessors, int source, int target)
 	{
-		Stack<int> pathStack = new Stack<int>();
-		int current = target;
+		var pathStack = new Stack<int>();
+		var current = target;
 
 		while(current != -1)
 		{
@@ -105,8 +105,7 @@ public partial class MainPage : ContentPage
 			return "No path found";
 		}
 
-		// Convert the path from indices to vertex names
-		List<string> path = new List<string>();
+		var path = new List<string>();
 		while(pathStack.Count > 0)
 		{
 			path.Add(IndexToVertex(pathStack.Pop()));
