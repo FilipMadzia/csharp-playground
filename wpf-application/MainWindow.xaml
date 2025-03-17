@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:wpf_application"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -37,11 +36,11 @@
         
         <Button Grid.Row="2" Grid.Column="3" Click="ClearButtonClick">C</Button>
         
-        <Button Grid.Row="3" Grid.RowSpan="3" Grid.Column="3">=</Button>
+        <Button Grid.Row="3" Grid.RowSpan="3" Click="ParseEquation" Grid.Column="3">=</Button>
         
-        <Button Grid.Row="1" Grid.Column="0">+</Button>
-        <Button Grid.Row="1" Grid.Column="1">-</Button>
-        <Button Grid.Row="1" Grid.Column="2">*</Button>
-        <Button Grid.Row="1" Grid.Column="3">/</Button>
+        <Button Grid.Row="1" Grid.Column="0" Click="MathAction">+</Button>
+        <Button Grid.Row="1" Grid.Column="1" Click="MathAction">-</Button>
+        <Button Grid.Row="1" Grid.Column="2" Click="MathAction">*</Button>
+        <Button Grid.Row="1" Grid.Column="3" Click="MathAction">/</Button>
     </Grid>
 </Window>
