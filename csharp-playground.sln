@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-application", "wpf-appl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dijkstra-algorithm", "dijkstra-algorithm\dijkstra-algorithm.csproj", "{3D51A80E-659A-409E-A514-62F723C738BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cars-intersection", "cars-intersection\cars-intersection.csproj", "{E13AA222-CD4E-4F6D-8277-1CCD0A286365}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D51A80E-659A-409E-A514-62F723C738BB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E13AA222-CD4E-4F6D-8277-1CCD0A286365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13AA222-CD4E-4F6D-8277-1CCD0A286365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13AA222-CD4E-4F6D-8277-1CCD0A286365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13AA222-CD4E-4F6D-8277-1CCD0A286365}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
