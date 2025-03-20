@@ -48,49 +48,30 @@ public class Intersection(int iterations)
             if (_nsLights)
             {
                 if (_n.Count > 0 && _n.Peek().ToDirection == Direction.S)
-                {
-                    // TODO change Peek() to Dequeue() and see if still works
-                    Console.WriteLine($"Car coming from N drives to {_n.Peek().ToDirection}");
-                    _n.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from N drives to {_n.Dequeue().ToDirection}");
+                
                 else if (_s.Count > 0 && _s.Peek().ToDirection == Direction.N)
-                {
-                    Console.WriteLine($"Car coming from S drives to {_s.Peek().ToDirection}");
-                    _s.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from S drives to {_s.Dequeue().ToDirection}");
+                
                 else if (_n.Count > 0 && (_n.Peek().ToDirection == Direction.E || _n.Peek().ToDirection == Direction.W))
-                {
-                    Console.WriteLine($"Car coming from N drives to {_n.Peek().ToDirection}");
-                    _n.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from N drives to {_n.Dequeue().ToDirection}");
+                
                 else if (_s.Count > 0 && (_s.Peek().ToDirection == Direction.E || _s.Peek().ToDirection == Direction.W))
-                {
-                    Console.WriteLine($"Car coming from S drives to {_s.Peek().ToDirection}");
-                    _s.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from S drives to {_s.Dequeue().ToDirection}");
             }
             else
             {
                 if (_w.Count > 0 && _w.Peek().ToDirection == Direction.E)
-                {
-                    Console.WriteLine($"Car coming from W drives to {_w.Peek().ToDirection}");
-                    _w.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from W drives to {_w.Dequeue().ToDirection}");
+                
                 else if (_e.Count > 0 && _e.Peek().ToDirection == Direction.W)
-                {
-                    Console.WriteLine($"Car coming from E drives to {_e.Peek().ToDirection}");
-                    _e.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from E drives to {_e.Dequeue().ToDirection}");
+                    
                 else if (_w.Count > 0 && (_w.Peek().ToDirection == Direction.N || _w.Peek().ToDirection == Direction.S))
-                {
-                    Console.WriteLine($"Car coming from W drives to {_w.Peek().ToDirection}");
-                    _w.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from W drives to {_w.Dequeue().ToDirection}");
+                    
                 else if (_e.Count > 0 && (_e.Peek().ToDirection == Direction.N || _e.Peek().ToDirection == Direction.S))
-                {
-                    Console.WriteLine($"Car coming from E drives to {_e.Peek().ToDirection}");
-                    _e.Dequeue();
-                }
+                    Console.WriteLine($"Car coming from E drives to {_e.Dequeue().ToDirection}");
             }
 
             Console.WriteLine($"Cars at:\n" +
