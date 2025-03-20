@@ -2,13 +2,12 @@ namespace cars_intersection;
 
 public class Intersection(int iterations)
 {
-    public Queue<Car> N = [];
-    public Queue<Car> E = [];
-    public Queue<Car> S = [];
-    public Queue<Car> W = [];
+    private readonly Queue<Car> _n = [];
+    private readonly Queue<Car> _e = [];
+    private readonly Queue<Car> _s = [];
+    private readonly Queue<Car> _w = [];
 
-    private bool NSLights;
-    private bool WELights;
+    private bool _nsLights;
 
     public void Run()
     {
@@ -23,20 +22,20 @@ public class Intersection(int iterations)
             switch (random.Next(4))
             {
                 case 0:
-                    N.Enqueue(new Car(Direction.N));
-                    Console.WriteLine($"Car coming from {N.Last().FromDirection}, wants to drive to {N.Last().ToDirection}");
+                    _n.Enqueue(new Car(Direction.N));
+                    Console.WriteLine($"Car coming from {_n.Last().FromDirection}, wants to drive to {_n.Last().ToDirection}");
                     break;
                 case 1:
-                    E.Enqueue(new Car(Direction.E));
-                    Console.WriteLine($"Car coming from {E.Last().FromDirection}, wants to drive to {E.Last().ToDirection}");
+                    _e.Enqueue(new Car(Direction.E));
+                    Console.WriteLine($"Car coming from {_e.Last().FromDirection}, wants to drive to {_e.Last().ToDirection}");
                     break;
                 case 2:
-                    S.Enqueue(new Car(Direction.S));
-                    Console.WriteLine($"Car coming from {S.Last().FromDirection}, wants to drive to {S.Last().ToDirection}");
+                    _s.Enqueue(new Car(Direction.S));
+                    Console.WriteLine($"Car coming from {_s.Last().FromDirection}, wants to drive to {_s.Last().ToDirection}");
                     break;
                 case 3:
-                    W.Enqueue(new Car(Direction.W));
-                    Console.WriteLine($"Car coming from {W.Last().FromDirection}, wants to drive to {W.Last().ToDirection}");
+                    _w.Enqueue(new Car(Direction.W));
+                    Console.WriteLine($"Car coming from {_w.Last().FromDirection}, wants to drive to {_w.Last().ToDirection}");
                     break;
                 default:
                     throw new IndexOutOfRangeException();
@@ -44,7 +43,61 @@ public class Intersection(int iterations)
             
             SetRandomLights();
 
-            Console.WriteLine(NSLights ? "Green lights at NS" : "Green lights at WE");
+            Console.WriteLine(_nsLights ? "Green lights at NS" : "Green lights at WE");
+
+            if (_nsLights)
+            {
+                if (_n.Count > 0 && _n.Peek().ToDirection == Direction.S)
+                {
+                    // TODO change Peek() to Dequeue() and see if still works
+                    Console.WriteLine($"Car coming from N drives to {_n.Peek().ToDirection}");
+                    _n.Dequeue();
+                }
+                else if (_s.Count > 0 && _s.Peek().ToDirection == Direction.N)
+                {
+                    Console.WriteLine($"Car coming from S drives to {_s.Peek().ToDirection}");
+                    _s.Dequeue();
+                }
+                else if (_n.Count > 0 && (_n.Peek().ToDirection == Direction.E || _n.Peek().ToDirection == Direction.W))
+                {
+                    Console.WriteLine($"Car coming from N drives to {_n.Peek().ToDirection}");
+                    _n.Dequeue();
+                }
+                else if (_s.Count > 0 && (_s.Peek().ToDirection == Direction.E || _s.Peek().ToDirection == Direction.W))
+                {
+                    Console.WriteLine($"Car coming from S drives to {_s.Peek().ToDirection}");
+                    _s.Dequeue();
+                }
+            }
+            else
+            {
+                if (_w.Count > 0 && _w.Peek().ToDirection == Direction.E)
+                {
+                    Console.WriteLine($"Car coming from W drives to {_w.Peek().ToDirection}");
+                    _w.Dequeue();
+                }
+                else if (_e.Count > 0 && _e.Peek().ToDirection == Direction.W)
+                {
+                    Console.WriteLine($"Car coming from E drives to {_e.Peek().ToDirection}");
+                    _e.Dequeue();
+                }
+                else if (_w.Count > 0 && (_w.Peek().ToDirection == Direction.N || _w.Peek().ToDirection == Direction.S))
+                {
+                    Console.WriteLine($"Car coming from W drives to {_w.Peek().ToDirection}");
+                    _w.Dequeue();
+                }
+                else if (_e.Count > 0 && (_e.Peek().ToDirection == Direction.N || _e.Peek().ToDirection == Direction.S))
+                {
+                    Console.WriteLine($"Car coming from E drives to {_e.Peek().ToDirection}");
+                    _e.Dequeue();
+                }
+            }
+
+            Console.WriteLine($"Cars at:\n" +
+                              $"N: {_n.Count}\n" +
+                              $"E: {_e.Count}\n" +
+                              $"S: {_s.Count}\n" +
+                              $"W: {_w.Count}\n");
         }
 
         Console.WriteLine("===Program ended===");
@@ -54,7 +107,6 @@ public class Intersection(int iterations)
     {
         var random = new Random();
         
-        NSLights = random.Next(2) == 0;
-        WELights = !NSLights;
+        _nsLights = random.Next(2) == 0;
     }
 }
