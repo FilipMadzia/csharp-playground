@@ -1,5 +1,5 @@
 ﻿using cars_intersection;
 
-var intersection = new Intersection(5);
+var intersection = new Intersection();
 
-intersection.Run();
+intersection.RunForIterationsRandom(5);
