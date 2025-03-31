@@ -1,0 +1,22 @@
+﻿<Window x:Class="wpf_introduction.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+        
+        <StackPanel>
+                <ListView ItemsSource="{Binding Computers}">
+                        <ListView.View>
+                                <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"></GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Cpu}" Header="CPU"></GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Ram}" Header="RAM"></GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Hdd}" Header="HDD"></GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding GraphicsCard}" Header="Graphics card"></GridViewColumn>
+                                </GridView>
+                        </ListView.View>
+                </ListView>
+        </StackPanel>
+</Window>
