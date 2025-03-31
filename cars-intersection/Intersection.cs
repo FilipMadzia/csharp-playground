@@ -6,6 +6,8 @@ public class Intersection
     public Queue<Car> E = [];
     public Queue<Car> S = [];
     public Queue<Car> W = [];
+    
+    public int CarsCount { get { return N.Count() + E.Count() + S.Count() + W.Count(); } }
 
     public bool NsLights { get; set; }
 
