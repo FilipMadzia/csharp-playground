@@ -9,8 +9,6 @@ namespace expenses_manager;
 /// </summary>
 public partial class App : Application
 {
-    private ServiceProvider serviceProvider;
-
     public App()
     {
         var services = new ServiceCollection();
