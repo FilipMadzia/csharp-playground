@@ -8,5 +8,6 @@ public class ExpenseEntity : Entity
 	public DateOnly Date { get; set; }
 	public decimal Amount { get; set; }
 	
+	public int CategoryId { get; set; }
 	public CategoryEntity Category { get; set; }
 }

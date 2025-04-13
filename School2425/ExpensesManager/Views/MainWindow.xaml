@@ -6,6 +6,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!-- Left column -->
+        <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="22" HorizontalAlignment="Center">Expenses</Label>
+            
+        <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Expenses}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Amount}" Header="Amount"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Button Grid.Row="2" Grid.Column="0" Margin="15">New expense</Button>
+        
+        <!-- Right column -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+            <Label VerticalAlignment="Center" FontSize="22" HorizontalAlignment="Center">Charts</Label>
+        </StackPanel>
     </Grid>
 </Window>

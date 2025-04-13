@@ -4,6 +4,7 @@ using ExpensesManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpensesManager.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250413123229_CategoriesSeed")]
+    partial class CategoriesSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,72 +106,6 @@ namespace ExpensesManager.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Expenses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 12.99m,
-                            CategoryId = 1,
-                            Date = new DateOnly(2025, 1, 1),
-                            Name = "Jogurty"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 11.50m,
-                            CategoryId = 1,
-                            Date = new DateOnly(2025, 1, 2),
-                            Name = "Mega Rollo Kebab"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Amount = 193.12m,
-                            CategoryId = 2,
-                            Date = new DateOnly(2025, 1, 3),
-                            Name = "Prąd"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Amount = 32.99m,
-                            CategoryId = 2,
-                            Date = new DateOnly(2025, 1, 4),
-                            Name = "Abonament za telefon"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Amount = 99.99m,
-                            CategoryId = 3,
-                            Date = new DateOnly(2025, 1, 5),
-                            Name = "T-Shirt"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Amount = 139.99m,
-                            CategoryId = 3,
-                            Date = new DateOnly(2025, 1, 6),
-                            Name = "Spodnie"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Amount = 29.99m,
-                            CategoryId = 4,
-                            Date = new DateOnly(2025, 1, 7),
-                            Name = "Kino"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Amount = 1299m,
-                            CategoryId = 4,
-                            Date = new DateOnly(2025, 1, 8),
-                            Name = "Lot helikopterem"
-                        });
                 });
 
             modelBuilder.Entity("ExpensesManager.Models.ExpenseEntity", b =>
