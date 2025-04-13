@@ -4,14 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using ExpensesManager.Commands;
-using ExpensesManager.Data;
 using ExpensesManager.Models;
+using ExpensesManager.Repositories;
 using ExpensesManager.Views;
 using LiveChartsCore;
 using LiveChartsCore.Painting;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
-using Microsoft.EntityFrameworkCore;
 using SkiaSharp;
 
 namespace ExpensesManager.ViewModels;
@@ -22,15 +21,17 @@ public class MainWindowViewModel
 	public List<ISeries> Series { get; set; }
 	public ICommand ShowAddExpenseWindowCommand { get; set; }
 
-	readonly AppDbContext _context;
+	readonly ExpensesRepository _expensesRepository;
+	readonly CategoriesRepository _categoriesRepository;
 
-	public MainWindowViewModel(AppDbContext context, AddExpenseWindowViewModel addExpenseWindowViewModel)
+	public MainWindowViewModel(ExpensesRepository expensesRepository, CategoriesRepository categoriesRepository, AddExpenseWindowViewModel addExpenseWindowViewModel)
 	{
-		_context = context;
+		_expensesRepository = expensesRepository;
+		_categoriesRepository = categoriesRepository;
 		
 		ShowAddExpenseWindowCommand = new RelayCommand((object _) => new AddExpenseWindow(addExpenseWindowViewModel).Show(), (object _) => true);
 		
-		var expenses = _context.Expenses.Include(x => x.Category);
+		var expenses = _expensesRepository.GetAllIncluding();
 		
 		Expenses = new ObservableCollection<ExpenseEntity>(expenses);
 		Series = GetSeries();
@@ -38,7 +39,8 @@ public class MainWindowViewModel
 
 	List<ISeries> GetSeries()
 	{
-		var categoryFrequency = _context.Expenses
+		var categoryFrequency = _expensesRepository
+			.GetAll()
 			.GroupBy(x => x.Category.Name)
 			.Select(group => new
 			{
@@ -62,7 +64,7 @@ public class MainWindowViewModel
 
 	Paint GetCategoryFill(string categoryName)
 	{
-		var category = _context.Categories.FirstOrDefault(x => x.Name == categoryName);
+		var category = _categoriesRepository.GetByName(categoryName);
 		
 		if (category == null)
 			throw new Exception($"Category {categoryName} not found");

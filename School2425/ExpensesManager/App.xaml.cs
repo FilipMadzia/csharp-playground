@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using ExpensesManager.Data;
+using ExpensesManager.Repositories;
 using ExpensesManager.ViewModels;
 using ExpensesManager.Views;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,10 @@ public partial class App : Application
 		// Views
 		services.AddTransient<MainWindow>();
 		services.AddTransient<AddExpenseWindow>();
+		
+		// Repositories
+		services.AddTransient<CategoriesRepository>();
+		services.AddSingleton<ExpensesRepository>();
 	}
 
 	protected override void OnStartup(StartupEventArgs e)
