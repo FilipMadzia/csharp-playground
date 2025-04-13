@@ -22,7 +22,7 @@
             
             <StackPanel>
                 <Label>Date</Label>
-                <DatePicker Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                <DatePicker SelectedDate="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
             </StackPanel>
             
             <StackPanel>

@@ -15,7 +15,7 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 	public event PropertyChangedEventHandler? PropertyChanged;
 
 	private string _name;
-	private DateOnly _date;
+	private DateTime _date = DateTime.Now;
 	private decimal _amount;
 	private CategoryEntity _category;
 
@@ -25,16 +25,16 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 		set { _name = value; OnPropertyChanged(); }
 	}
 
-	public DateOnly Date
+	public DateTime Date
 	{
 		get => _date;
 		set { _date = value; OnPropertyChanged(); }
 	}
 
-	public decimal Amount
+	public string Amount
 	{
-		get => _amount;
-		set { _amount = value; OnPropertyChanged(); }
+		get => _amount.ToString();
+		set { _amount = decimal.Parse(value); OnPropertyChanged(); }
 	}
 
 	public CategoryEntity Category
@@ -73,8 +73,8 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 		var expense = new ExpenseEntity
 		{
 			Name = Name,
-			Amount = Amount,
-			Date = Date,
+			Amount = _amount,
+			Date = new DateOnly(_date.Year, _date.Month, _date.Day),
 			Category = Category
 		};
 		
@@ -84,7 +84,7 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 
 	bool CanAddExpense(object obj)
 	{
-		if (string.IsNullOrWhiteSpace(Name) || Amount < 0 || Date == DateOnly.MinValue)
+		if (string.IsNullOrWhiteSpace(Name) || _amount < 0 || Date == DateTime.MinValue)
 			return false;
 		
 		return true;
