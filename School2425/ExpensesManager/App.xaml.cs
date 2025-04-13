@@ -1,6 +1,6 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using ExpensesManager.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ExpensesManager;
 
@@ -9,4 +9,13 @@ namespace ExpensesManager;
 /// </summary>
 public partial class App : Application
 {
+	public App()
+	{
+		var services = new ServiceCollection();
+	}
+
+	void ConfigureServices(ServiceCollection services)
+	{
+		services.AddDbContext<AppDbContext>();
+	}
 }
