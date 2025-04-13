@@ -25,6 +25,16 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Amount}" Header="Amount"></GridViewColumn>
+                    <GridViewColumn Header="Category">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="15" Height="15" CornerRadius="7" Background="{Binding Category.ColorHex}" Margin="5,0,5,0"/>
+                                    <TextBlock Text="{Binding Category.Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -5,17 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesManager.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
 	public DbSet<ExpenseEntity> Expenses => Set<ExpenseEntity>();
 	public DbSet<CategoryEntity> Categories => Set<CategoryEntity>();
-
-	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-	{
-		optionsBuilder.UseSqlServer("Database=ExpensesManagerDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=false");
-		
-		base.OnConfiguring(optionsBuilder);
-	}
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
