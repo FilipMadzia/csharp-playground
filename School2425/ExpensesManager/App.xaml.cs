@@ -29,10 +29,12 @@ public partial class App : Application
 	void ConfigureServices(ServiceCollection services)
 	{
 		// ViewModels
-		services.AddSingleton<MainWindowViewModel>();
+		services.AddTransient<MainWindowViewModel>();
+		services.AddTransient<AddExpenseWindowViewModel>();
 		
 		// Views
-		services.AddSingleton<MainWindow>();
+		services.AddTransient<MainWindow>();
+		services.AddTransient<AddExpenseWindow>();
 	}
 
 	protected override void OnStartup(StartupEventArgs e)

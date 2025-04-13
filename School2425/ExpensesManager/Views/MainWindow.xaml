@@ -40,7 +40,7 @@
             </ListView.View>
         </ListView>
         
-        <Button Grid.Row="2" Grid.Column="0" Margin="15">New expense</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="15" Command="{Binding ShowAddExpenseWindowCommand}">New expense</Button>
         
         <!-- Right column -->
         <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="22" HorizontalAlignment="Center">Most frequent categories</Label>

@@ -23,7 +23,7 @@ public class AppDbContext : DbContext
 			new() { Id = 1, Name = "Food", Description = "", ColorHex = "#D20103" },
 			new() { Id = 2, Name = "Bills", Description = "", ColorHex = "#FE9900" },
 			new() { Id = 3, Name = "Clothing", Description = "", ColorHex = "#060270" },
-			new() { Id = 4, Name = "Entertainment", Description = "", ColorHex = "#98F5F9" }
+			new() { Id = 4, Name = "Entertainment", Description = "", ColorHex = "#7DDA58" }
 		};
 		
 		modelBuilder.Entity<CategoryEntity>().HasData(categoriesSeed);
