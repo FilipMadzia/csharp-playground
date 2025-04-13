@@ -4,13 +4,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="AddExpenseWindow" Height="450" Width="200">
+        Title="Add Expense" Height="450" Width="250" Padding="10">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">New expense</Label>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <StackPanel>
+                <Label>Name</Label>
+                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Date</Label>
+                <DatePicker Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Amount</Label>
+                <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Category</Label>
+                <ComboBox ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedItem="{Binding Category, Mode=TwoWay}"></ComboBox>
+            </StackPanel>
+        </StackPanel>
+        
+        <Button Grid.Row="2" Command="{Binding AddExpenseCommand}">Add</Button>
     </Grid>
 </Window>

@@ -20,6 +20,7 @@ public class ExpensesRepository : Repository<ExpenseEntity>
 		return _context.Expenses
 			.Include(x => x.Category)
 			.OrderByDescending(x => x.Date)
+			.ThenByDescending(x => x.Id)
 			.ToList();
 	}
 

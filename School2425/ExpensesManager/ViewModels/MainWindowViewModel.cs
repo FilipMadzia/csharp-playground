@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using ExpensesManager.Commands;
 using ExpensesManager.Models;
@@ -15,10 +17,29 @@ using SkiaSharp;
 
 namespace ExpensesManager.ViewModels;
 
-public class MainWindowViewModel
+public class MainWindowViewModel : INotifyPropertyChanged
 {
-	public ObservableCollection<ExpenseEntity> Expenses { get; set; }
-	public List<ISeries> Series { get; set; }
+	private ObservableCollection<ExpenseEntity> _expenses;
+	public ObservableCollection<ExpenseEntity> Expenses
+	{
+		get => _expenses;
+		set
+		{
+			_expenses = value;
+			OnPropertyChanged(nameof(Expenses));
+		}
+	}
+
+	private ObservableCollection<ISeries> _series;
+	public ObservableCollection<ISeries> Series
+	{
+		get => _series;
+		set
+		{
+			_series = value;
+			OnPropertyChanged(nameof(Series));
+		}
+	}
 	public ICommand ShowAddExpenseWindowCommand { get; set; }
 
 	readonly ExpensesRepository _expensesRepository;
@@ -29,15 +50,26 @@ public class MainWindowViewModel
 		_expensesRepository = expensesRepository;
 		_categoriesRepository = categoriesRepository;
 		
-		ShowAddExpenseWindowCommand = new RelayCommand((object _) => new AddExpenseWindow(addExpenseWindowViewModel).Show(), (object _) => true);
+		ShowAddExpenseWindowCommand = new RelayCommand(_ => new AddExpenseWindow(addExpenseWindowViewModel).Show(), (_) => true);
 		
 		var expenses = _expensesRepository.GetAllIncluding();
 		
 		Expenses = new ObservableCollection<ExpenseEntity>(expenses);
 		Series = GetSeries();
+		
+		addExpenseWindowViewModel.ExpenseAdded += OnExpenseAdded;
+	}
+	
+	void OnExpenseAdded(ExpenseEntity newExpense)
+	{
+		var expenses = _expensesRepository.GetAllIncluding();
+		
+		Expenses = new ObservableCollection<ExpenseEntity>(expenses);
+		Series = GetSeries(); // Refresh chart
 	}
 
-	List<ISeries> GetSeries()
+
+	ObservableCollection<ISeries> GetSeries()
 	{
 		var categoryFrequency = _expensesRepository
 			.GetAll()
@@ -48,7 +80,7 @@ public class MainWindowViewModel
 				Count = group.Count()
 			}).ToList();
 		
-		return categoryFrequency
+		return new ObservableCollection<ISeries>(categoryFrequency
 			.Select(group => (ISeries)new PieSeries<int>
 			{
 				Values = [group.Count],
@@ -59,7 +91,7 @@ public class MainWindowViewModel
 				},
 				DataLabelsFormatter = _ => $"{group.CategoryName} {group.Count}",
 				Fill = GetCategoryFill(group.CategoryName)
-			}).ToList();
+			}).ToList());
 	}
 
 	Paint GetCategoryFill(string categoryName)
@@ -70,5 +102,20 @@ public class MainWindowViewModel
 			throw new Exception($"Category {categoryName} not found");
 
 		return new SolidColorPaint(SKColor.Parse(category.ColorHex));
+	}
+
+	public event PropertyChangedEventHandler? PropertyChanged;
+
+	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+	{
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+	}
+
+	protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+	{
+		if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+		field = value;
+		OnPropertyChanged(propertyName);
+		return true;
 	}
 }
