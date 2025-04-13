@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -42,8 +43,11 @@
         <Button Grid.Row="2" Grid.Column="0" Margin="15">New expense</Button>
         
         <!-- Right column -->
-        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
-            <Label VerticalAlignment="Center" FontSize="22" HorizontalAlignment="Center">Charts</Label>
-        </StackPanel>
+        <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="22" HorizontalAlignment="Center">Most frequent categories</Label>
+        
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <lvc:PieChart Series="{Binding Series}" Title="{Binding Title}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Grid>
+
     </Grid>
 </Window>

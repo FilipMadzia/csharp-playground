@@ -19,9 +19,7 @@ public partial class App : Application
 	{
 		var serviceCollection = new ServiceCollection();
 
-		serviceCollection.AddDbContext<AppDbContext>(options =>
-			options.UseSqlServer(
-				"Database=ExpensesManagerDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=false"));
+		serviceCollection.AddDbContext<AppDbContext>();
 		
 		ConfigureServices(serviceCollection);
 		
