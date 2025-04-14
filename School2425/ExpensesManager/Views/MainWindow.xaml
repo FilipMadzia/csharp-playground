@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         mc:Ignorable="d"
-        Title="Expenses Manager" Height="450" Width="800">
+        Title="Expenses Manager" Height="450" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -24,7 +24,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" Width="80"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Amount}" Header="Amount"></GridViewColumn>
                     <GridViewColumn Header="Category">
                         <GridViewColumn.CellTemplate>
@@ -33,6 +33,14 @@
                                     <Border Width="15" Height="15" CornerRadius="7" Background="{Binding Category.ColorHex}" Margin="5,0,5,0"/>
                                     <TextBlock Text="{Binding Category.Name}" />
                                 </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Details">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.ShowExpenseDetailsWindowCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        CommandParameter="{Binding}">Details</Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

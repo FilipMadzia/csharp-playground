@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ExpensesManager.Commands;
 using ExpensesManager.Models;
@@ -41,6 +42,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
 		}
 	}
 	public ICommand ShowAddExpenseWindowCommand { get; set; }
+	public ICommand ShowExpenseDetailsWindowCommand { get; set; }
 
 	readonly ExpensesRepository _expensesRepository;
 	readonly CategoriesRepository _categoriesRepository;
@@ -50,7 +52,8 @@ public class MainWindowViewModel : INotifyPropertyChanged
 		_expensesRepository = expensesRepository;
 		_categoriesRepository = categoriesRepository;
 		
-		ShowAddExpenseWindowCommand = new RelayCommand(_ => new AddExpenseWindow(addExpenseWindowViewModel).Show(), (_) => true);
+		ShowAddExpenseWindowCommand = new RelayCommand(_ => new AddExpenseWindow(addExpenseWindowViewModel).Show(), _ => true);
+		ShowExpenseDetailsWindowCommand = new RelayCommand(ShowExpenseDetails, _ => true);
 		
 		var expenses = _expensesRepository.GetAllIncluding();
 		
@@ -60,12 +63,33 @@ public class MainWindowViewModel : INotifyPropertyChanged
 		addExpenseWindowViewModel.ExpenseAdded += OnExpenseAdded;
 	}
 	
+	void ShowExpenseDetails(object obj)
+	{
+		var expense = obj as ExpenseEntity;
+		
+		if (expense != null)
+		{
+			var detailsViewModel = new ExpenseDetailsWindowViewModel(expense, _expensesRepository);
+			var detailsWindow = new ExpenseDetailsWindow(detailsViewModel);
+			detailsWindow.Show();
+			detailsViewModel.ExpenseDeleted += OnExpenseDeleted;
+		}
+	}
+
+	void OnExpenseDeleted(ExpenseEntity deletedExpense)
+	{
+		var expenses = _expensesRepository.GetAllIncluding();
+		
+		Expenses = new ObservableCollection<ExpenseEntity>(expenses);
+		Series = GetSeries();
+	}
+	
 	void OnExpenseAdded(ExpenseEntity newExpense)
 	{
 		var expenses = _expensesRepository.GetAllIncluding();
 		
 		Expenses = new ObservableCollection<ExpenseEntity>(expenses);
-		Series = GetSeries(); // Refresh chart
+		Series = GetSeries();
 	}
 
 
@@ -109,13 +133,5 @@ public class MainWindowViewModel : INotifyPropertyChanged
 	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
 	{
 		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	}
-
-	protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-	{
-		if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-		field = value;
-		OnPropertyChanged(propertyName);
-		return true;
 	}
 }

@@ -56,7 +56,7 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 	readonly ExpensesRepository _expensesRepository;
 	
 	public event Action<ExpenseEntity> ExpenseAdded;
-
+	public Action CloseAction { get; set; }
 
 	public AddExpenseWindowViewModel(CategoriesRepository categoriesRepository, ExpensesRepository expensesRepository)
 	{
@@ -79,6 +79,7 @@ public class AddExpenseWindowViewModel : INotifyPropertyChanged
 		};
 		
 		_expensesRepository.Add(expense);
+		CloseAction?.Invoke();
 		ExpenseAdded?.Invoke(expense);
 	}
 

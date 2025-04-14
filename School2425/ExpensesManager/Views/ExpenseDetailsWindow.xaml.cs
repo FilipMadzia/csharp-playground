@@ -1,11 +1,12 @@
 using System.Windows;
+using ExpensesManager.Models;
 using ExpensesManager.ViewModels;
 
 namespace ExpensesManager.Views;
 
-public partial class AddExpenseWindow : Window
+public partial class ExpenseDetailsWindow : Window
 {
-	public AddExpenseWindow(AddExpenseWindowViewModel viewModel)
+	public ExpenseDetailsWindow(ExpenseDetailsWindowViewModel viewModel)
 	{
 		InitializeComponent();
 		viewModel.CloseAction = () => Close();

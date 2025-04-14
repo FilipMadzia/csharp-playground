@@ -1,0 +1,42 @@
+<Window x:Class="ExpensesManager.Views.ExpenseDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Title="Expense Details" Height="450" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Expense Details</Label>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label>Name</Label>
+                <Label Content="{Binding SelectedExpense.Name}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label>Date</Label>
+                <Label Content="{Binding SelectedExpense.Date}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label>Amount</Label>
+                <Label Content="{Binding SelectedExpense.Amount}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label>Category</Label>
+                <Border Width="15" Height="15" CornerRadius="7" Background="{Binding Category.ColorHex}" Margin="5,0,5,0"/>
+                <Label Content="{Binding SelectedExpense.Category.Name}" />
+            </StackPanel>
+        </StackPanel>
+        
+        <Button Grid.Row="2" Foreground="Red" Command="{Binding DeleteExpenseCommand}">Delete</Button>
+    </Grid>
+</Window>
