@@ -47,7 +47,7 @@ while (running)
         Console.WriteLine(error);
     }
 
-    if (output != $"Ping request could not find host {siteUrl}. Please check the name and try again.")
+    if (!output.Contains($"Ping request could not find host {siteUrl}. Please check the name and try again."))
     {
         Console.WriteLine("Site is online");
         
