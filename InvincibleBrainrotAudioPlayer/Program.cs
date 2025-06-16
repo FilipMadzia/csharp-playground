@@ -2,9 +2,9 @@ using NAudio.Wave;
 
 class Program
 {
-    static WaveOutEvent waveOutDevice = new();
-    static AudioFileReader audioFileReader;
-    static readonly string[] audioFilePaths =
+    static WaveOutEvent _waveOutDevice = new();
+    static AudioFileReader? _audioFileReader;
+    static readonly string[] AudioFilePaths =
     {
         "a-steak.mp3",
         "i-made-a-steak.mp3",
@@ -14,12 +14,12 @@ class Program
         "stand-ready-for-my-arrival-worm.mp3",
         "where-is-omni-man.mp3"
     };
-    static int intervalInSeconds;
+    static int _intervalInSeconds;
 
     static void Main(string[] args)
     {
-        intervalInSeconds = args.Length > 0 ? int.Parse(args[0]) : 5;
-        waveOutDevice = new WaveOutEvent();
+        _intervalInSeconds = args.Length > 0 ? int.Parse(args[0]) : 5;
+        _waveOutDevice = new WaveOutEvent();
         InitializeAudio();
 
         while (true)
@@ -27,26 +27,26 @@ class Program
             var audioFilePath = GetRandomAudioFilePath();
             SetAudioFile(audioFilePath);
 
-            waveOutDevice.Play();
+            _waveOutDevice.Play();
 
-            Thread.Sleep(intervalInSeconds * 1000);
+            Thread.Sleep(_intervalInSeconds * 1000);
         }
     }
 
     static void InitializeAudio()
     {
-        audioFileReader = new AudioFileReader($"Audios/{audioFilePaths[0]}");
-        waveOutDevice.Init(audioFileReader);
+        _audioFileReader = new AudioFileReader($"Audios/{AudioFilePaths[0]}");
+        _waveOutDevice.Init(_audioFileReader);
     }
 
-    static string GetRandomAudioFilePath() => audioFilePaths[Random.Shared.Next(audioFilePaths.Length)];
+    static string GetRandomAudioFilePath() => AudioFilePaths[Random.Shared.Next(AudioFilePaths.Length)];
 
     static void SetAudioFile(string fileName)
     {
-        waveOutDevice.Stop();
-        audioFileReader.Dispose();
+        _waveOutDevice.Stop();
+        _audioFileReader?.Dispose();
 
-        audioFileReader = new AudioFileReader($"Audios/{fileName}");
-        waveOutDevice.Init(audioFileReader);
+        _audioFileReader = new AudioFileReader($"Audios/{fileName}");
+        _waveOutDevice.Init(_audioFileReader);
     }
 }
