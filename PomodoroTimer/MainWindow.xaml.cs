@@ -6,9 +6,9 @@ namespace PomodoroTimer;
 
 public partial class MainWindow : Window
 {
-	private bool _isTimerRunning = false;
+	private bool _isTimerRunning;
 	private readonly int _initialSeconds = 25 * 60; // 25min = 25 * 60s
-	private int _timerSeconds = 25 * 60;
+	private int _timerSeconds;
 	private DispatcherTimer _dispatcherTimer;
 	
 	public MainWindow()
@@ -20,15 +20,15 @@ public partial class MainWindow : Window
 			Interval = TimeSpan.FromSeconds(1)
 		};
 		
-		_dispatcherTimer.Tick += DispatcherTimerTick; 
+		_dispatcherTimer.Tick += OnDispatcherTimerTick; 
 	}
 
-	private void DispatcherTimerTick(object? sender, EventArgs e)
+	private void OnDispatcherTimerTick(object? sender, EventArgs e)
 	{
 		if (_timerSeconds > 0)
 		{
 			_timerSeconds--;
-			UpdateTimerDisplay();
+			UpdateTimerDisplay(_timerSeconds);
 		}
 		else
 		{
@@ -61,10 +61,11 @@ public partial class MainWindow : Window
 	}
 
 	
-	private void UpdateTimerDisplay()
+	private void UpdateTimerDisplay(int totalSeconds)
 	{
-		int minutes = _timerSeconds / 60;
-		int seconds = _timerSeconds % 60;
+		var minutes = totalSeconds / 60;
+		var seconds = totalSeconds % 60;
+		
 		TimerLbl.Content = $"{minutes:D2}:{seconds:D2}";
 	}
 }
