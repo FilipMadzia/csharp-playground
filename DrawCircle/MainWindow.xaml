@@ -3,8 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DrawCircle"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="500">
-    <Canvas x:Name="Canvas" Height="500" Width="500"></Canvas>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Canvas Grid.Row="0" x:Name="Canvas" Height="500" Width="500" />
+                <Slider ValueChanged="RangeBase_OnValueChanged" IsSnapToTickEnabled="True" TickFrequency="1" Grid.Row="1" Minimum="0" Maximum="359" Value="30" VerticalAlignment="Center" />
+                <Label Grid.Row="2" x:Name="InfoLbl" HorizontalAlignment="Center" Content="Step: 30°" />
+        </Grid>
 </Window>
