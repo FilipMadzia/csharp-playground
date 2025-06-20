@@ -15,6 +15,24 @@ public partial class MainWindow : Window
 
 		_origin = CalculateCanvasOrigin();
 	}
+	
+	void DrawCircleWithLines(int stepInDegrees, double radius, Brush brush)
+	{
+		for (var i = 0; i <= 360 - stepInDegrees; i += stepInDegrees)
+		{
+
+			var line = new Line
+			{
+				X1 = _origin.x + radius * Math.Cos(i * Math.PI / 180),
+				X2 = _origin.x + radius * Math.Cos((i + stepInDegrees) * Math.PI / 180),
+				Y1 = _origin.y - radius * Math.Sin(i * Math.PI / 180),
+				Y2 = _origin.y - radius * Math.Sin((i + stepInDegrees) * Math.PI / 180),
+				Stroke = brush
+			};
+			
+			Canvas.Children.Add(line);
+		}
+	}
 
 	void DrawCircle(int stepInDegrees, double radius, Brush brush)
 	{
@@ -51,7 +69,7 @@ public partial class MainWindow : Window
 		Canvas.Children.Clear();
 
 		var step = 360 - (int)slider.Value;
-		DrawCircle(step, 100, Brushes.Black);
+		DrawCircleWithLines(step, 100, Brushes.Black);
 		if (InfoLbl != null) InfoLbl.Content = $"Step: {step}°";
 	}
 }
