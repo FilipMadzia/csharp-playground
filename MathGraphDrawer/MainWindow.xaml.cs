@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -9,6 +8,7 @@ namespace MathGraphDrawer;
 public partial class MainWindow : Window
 {
 	private (double x, double y) _origin;
+	private string _equation;
 	
 	public MainWindow()
 	{
@@ -19,7 +19,7 @@ public partial class MainWindow : Window
 
 	private void EquationTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
 	{
-		var input = (sender as TextBox)!.Text;
+		_equation = (sender as TextBox)!.Text;
 		
 		UpdateCanvas();
 	}
@@ -31,6 +31,46 @@ public partial class MainWindow : Window
 		GraphCanvas.Children.Clear();
 		DrawGraphAxes();
 		DrawGraphOrigin();
+		DrawEquation();
+	}
+
+	private void DrawEquation()
+	{
+		if (_equation == null)
+			return;
+		
+		var mathEquationSolver = new MathEquationSolver(_equation);
+		
+		for (var x1 = -_origin.x; x1 < GraphCanvas.ActualWidth - 1; x1++)
+		{
+			var y1 = mathEquationSolver.SolveEquationForX(x1);
+
+			var x2 = x1 + 1;
+			var y2 = mathEquationSolver.SolveEquationForX(x2);
+			
+			/*if (GraphCanvas.ActualHeight - _origin.y + y1 < 0)
+				continue;
+			
+			if (GraphCanvas.ActualHeight - _origin.y + y2 < 0)
+				continue;
+
+			if (_origin.y - y1 < 0)
+				continue;
+			
+			if (_origin.y - y2 < 0)
+				continue;*/
+
+			var line = new Line
+			{
+				X1 = _origin.x + x1,
+				X2 = _origin.x + x2,
+				Y1 = _origin.y - y1,
+				Y2 = _origin.y - y2,
+				Stroke = Brushes.Red
+			};
+
+			GraphCanvas.Children.Add(line);
+		}
 	}
 
 	private void DrawGraphOrigin()
