@@ -29,9 +29,11 @@ public partial class MainWindow : Window
 		_origin = GetCanvasOrigin();
 		
 		GraphCanvas.Children.Clear();
+		RootsLbl.Content = string.Empty;
 		DrawGraphAxes();
 		DrawGraphOrigin();
 		DrawEquation();
+		
 	}
 
 	private void DrawEquation()
@@ -40,6 +42,13 @@ public partial class MainWindow : Window
 			return;
 		
 		var mathEquationSolver = new MathEquationSolver(_equation);
+		
+		var roots = mathEquationSolver.GetRoots();
+		
+		foreach (var root in roots)
+		{
+			RootsLbl.Content += $"{root}\n";
+		}
 		
 		for (var x1 = -_origin.x; x1 < GraphCanvas.ActualWidth - 1; x1++)
 		{
